@@ -8,37 +8,92 @@
   </head>
   <body>
     <header>
-      <h1>Mergington High School</h1>
-      <h2>Extracurricular Activities</h2>
+      <div class="header-title">
+        <h1>Mergington High School</h1>
+        <h2>Extracurricular Activities</h2>
+      </div>
+      <nav id="auth-nav">
+        <div id="logged-out-nav">
+          <button id="login-btn">Login</button>
+          <button id="register-btn">Register</button>
+        </div>
+        <div id="logged-in-nav" class="hidden">
+          <span id="user-info">Welcome, <span id="username"></span>!</span>
+          <button id="logout-btn">Logout</button>
+        </div>
+      </nav>
     </header>
 
-    <main>
-      <section id="activities-container">
-        <h3>Available Activities</h3>
-        <div id="activities-list">
-          <!-- Activities will be loaded here -->
-          <p>Loading activities...</p>
-        </div>
-      </section>
-
-      <section id="signup-container">
-        <h3>Sign Up for an Activity</h3>
-        <form id="signup-form">
+    <!-- Authentication Modals -->
+    <div id="login-modal" class="modal hidden">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3>Login</h3>
+        <form id="login-form">
           <div class="form-group">
-            <label for="email">Student Email:</label>
-            <input type="email" id="email" required placeholder="your-email@mergington.edu" />
+            <label for="login-username">Username:</label>
+            <input type="text" id="login-username" required />
           </div>
           <div class="form-group">
-            <label for="activity">Select Activity:</label>
-            <select id="activity" required>
-              <option value="">-- Select an activity --</option>
-              <!-- Activity options will be loaded here -->
-            </select>
+            <label for="login-password">Password:</label>
+            <input type="password" id="login-password" required />
           </div>
-          <button type="submit">Sign Up</button>
+          <button type="submit">Login</button>
         </form>
-        <div id="message" class="hidden"></div>
-      </section>
+        <div id="login-message" class="hidden"></div>
+      </div>
+    </div>
+
+    <div id="register-modal" class="modal hidden">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3>Register</h3>
+        <form id="register-form">
+          <div class="form-group">
+            <label for="register-username">Username:</label>
+            <input type="text" id="register-username" required />
+          </div>
+          <div class="form-group">
+            <label for="register-email">Email:</label>
+            <input type="email" id="register-email" required placeholder="your-email@mergington.edu" />
+          </div>
+          <div class="form-group">
+            <label for="register-password">Password:</label>
+            <input type="password" id="register-password" required />
+          </div>
+          <button type="submit">Register</button>
+        </form>
+        <div id="register-message" class="hidden"></div>
+      </div>
+    </div>
+
+    <main>
+      <div id="auth-required" class="hidden">
+        <section class="auth-prompt">
+          <h3>Please Login or Register</h3>
+          <p>You need to be logged in to view and sign up for activities.</p>
+          <button id="auth-login-btn">Login</button>
+          <button id="auth-register-btn">Register</button>
+        </section>
+      </div>
+
+      <div id="main-content" class="hidden">
+        <section id="activities-container">
+          <h3>Available Activities</h3>
+          <div id="activities-list">
+            <!-- Activities will be loaded here -->
+            <p>Loading activities...</p>
+          </div>
+        </section>
+
+        <section id="signup-container">
+          <h3>Manage Your Activities</h3>
+          <div id="user-activities">
+            <p>Select an activity to sign up or manage your registrations.</p>
+          </div>
+          <div id="message" class="hidden"></div>
+        </section>
+      </div>
     </main>
 
     <footer>
